@@ -58,6 +58,7 @@ TEMPLATES = [
         'DIRS': [
                 BASE_DIR / 'templates',
                 BASE_DIR / 'auth_app' / 'templates',
+                BASE_DIR / 'home_app' / 'templates',
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,5 +123,18 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    BASE_DIR / 'auth_app' / 'static'
+    BASE_DIR / 'auth_app' / 'static',
+    BASE_DIR / 'home_app' / 'static',
 ]
+
+AUTH_USER_MODEL = "auth_app.User"
+
+
+# Login
+
+LOGIN_REDIRECT_URL = "home"
+
+
+# AUTO_FIELD
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

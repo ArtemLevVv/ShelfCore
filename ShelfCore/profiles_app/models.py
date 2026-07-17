@@ -27,9 +27,9 @@ class EmployeeProfile(models.Model):
     
     positions = models.CharField(
             max_length=100,
-            black=True,
+            blank=True,
         )
     
-    created_at = models.Date1TimeField(
+    created_at = models.DateTimeField(
         auto_now_add = True
     )

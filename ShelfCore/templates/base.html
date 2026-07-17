@@ -23,8 +23,8 @@
                             <a href="{% url 'signin' %}">Sign In</a>
                             <a href="{% url 'signup' %}">Sign Up</a>
                         {% else %}
-                            <a href="">link</a>
-                            <a href="">link</a>
+                            <a href="{% url 'home' %}">Home</a>
+                            <a href="{% url 'products' %}">Products</a>
                         {% endif %}
                     </div>
                     {% if user.is_authenticated %}

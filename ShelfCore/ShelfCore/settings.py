@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_app',
+    'home_app',
+    'profiles_app',
+    'products_app'
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,7 @@ TEMPLATES = [
                 BASE_DIR / 'templates',
                 BASE_DIR / 'auth_app' / 'templates',
                 BASE_DIR / 'home_app' / 'templates',
+                BASE_DIR / 'products_app' / 'templates'
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -125,6 +129,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
     BASE_DIR / 'auth_app' / 'static',
     BASE_DIR / 'home_app' / 'static',
+    BASE_DIR / 'products_app' / 'static'
 ]
 
 AUTH_USER_MODEL = "auth_app.User"

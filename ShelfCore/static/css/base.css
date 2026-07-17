@@ -2,39 +2,50 @@ nav{
     position: absolute;
     left: 0;
     top: 0;
-    background-color: cadetblue;
+    background-color: #86b5ff;
     display: flex;
     width: 100%;
     height: 70px;
 }
 
-.links{
-    /* background-color: #ff0000; */
+nav .links{
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0px 20px 0px 20px;
+}
+
+nav .links a{
     text-decoration: none;
-    color: azure;
+    color: #1E293B;
+    font-size: 26px;
+    transition: 0.3s;
+}
+
+nav .links a:hover{
+    transform: scale(1.1);
 }
 
 .log-out{
     display: flex;
     width: 200px;
     height: 70px;
-    /* background-color: blue; */
     justify-content: center;
     align-items: center;
 }
 
 .log-out button{
-    color:brown;
+    color: #F59E0B;
     border: solid 3px;
     border-radius: 25px;
     width: 100px;
     height: 40px;
-    background-color:cornsilk;
+    background-color: #FEF3C7;
     font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-color: #1E293B;
 }

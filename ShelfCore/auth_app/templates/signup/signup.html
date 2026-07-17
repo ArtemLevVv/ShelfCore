@@ -7,18 +7,26 @@
     
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'signup/signup.html' %}">
+    <link rel="stylesheet" href="{% static 'signup/signup.css' %}">
 {% endblock link %}
     
 
 {% block content %}
     <div class="form">
+        <div class="links">
+            <a href="{% url 'signin' %}" class="another">Sign In</a>
+            <a href="{% url 'signup' %}" class="current">Sign UP</a>
+            <a href="{% url 'home' %}" class="another">Home</a>
+            <hr>
+        </div>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">
-                SIGN UP
-            </button>
+            <div class="button">
+                <button type="submit">
+                    SIGN IN 
+                </button>
+            </div>
         </form>
     </div>
 {% endblock content %}

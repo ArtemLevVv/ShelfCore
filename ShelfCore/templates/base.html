@@ -8,11 +8,16 @@
         {% block link %}
             
         {% endblock link %}
-        <title>
-        {% block title %}
+        
+        {% block script %}
             
-        {% endblock title %}
-            </title>
+        {% endblock script %}
+            
+        <title>
+            {% block title %}
+                
+            {% endblock title %}
+        </title>
     </head>
     <body>
         <header>
@@ -24,7 +29,7 @@
                             <a href="{% url 'signup' %}">Sign Up</a>
                         {% else %}
                             <a href="{% url 'home' %}">Home</a>
-                            <a href="{% url 'products' %}">Products</a>
+                            <a href="{% url 'product_show' %}">Products</a>
                         {% endif %}
                     </div>
                     {% if user.is_authenticated %}
@@ -41,6 +46,11 @@
             {% endif %}
         </header>
         <main>
+            {% for group in user.groups.all %}
+                <p>
+                    Role: {{ group.name }}
+                </p>
+            {% endfor %}
             {% block content %}
                 
             {% endblock content %}

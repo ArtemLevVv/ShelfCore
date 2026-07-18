@@ -46,6 +46,11 @@ nav .links a:hover{
     font-family: 'Times New Roman', Times, serif;
 }
 
+main{
+    margin-top: 70px;
+}
+
 body{
     background-color: #1E293B;
 }
+

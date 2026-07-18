@@ -5,11 +5,148 @@
     Products
 {% endblock title %}
     
+
+{% block script %}
+    <script src="{% static 'products/js/products.js' %}" defer></script>
+{% endblock script %}
+    
+
 {% block link %}
-    <link rel="stylesheet" href="{% static 'products/products.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock link %}
     
 {% block content %}
+{{products}}
     
+    <div class="show-menu">
+        <div class="search">
+
+        </div>
+        <div class="menu">
+            {% for product in products %}
+                <div class="product">
+                    <p>{{product}}</p>
+                    <div class="buttons">
+                        <button data-id="{{product.id}}" class="edit-btn" >Edit</button>
+                        <button data-id="{{product.id}}" class="info-btn">Info</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pages">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    <
+                </a>
+            {% else %}
+                <p><</p>
+            {% endif %}
+            
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">
+                    >
+                </a>
+            {% else %}
+                <p>></p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="modal" data-id="product-modal">
+        <div class="modal-view">  
+            <div class="close">
+                <button id="close-modal">
+                    X
+                </button>
+            </div>
+            <h2 id="modal-name"></h2>
+            <div class="modal-text">
+                <p>
+                    Unit:
+                    <span id="modal-unit"></span>
+                </p>
+                <p>
+                    Barcode:
+                    <span id="modal-barcode"></span>
+                </p>
+                <p>
+                    Category:
+                    <span id="modal-category"></span>
+                </p>
+            </div>
+            <div class="modal-toggle">
+                <p>
+                    Is active:
+                    <span id="modal-is-active"></span>
+                </p>
+                <p>
+                    Is age restricted:
+                    <span id="is-age-restricted"></span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="modal-edit"> 
+            <div class="close">
+                <button id="close-modal">
+                    X
+                </button>
+            </div>
+            <h2 id="modal-name-edit"></h2>
+            <div class="modal-input">
+                <div class="inputs">
+                    <label for="">Name:</label>
+                    <input type="text" id="edit-name">
+                </div>
+                <div class="inputs">
+                    <label for="">Barcode:</label>
+                    <input type="text" id="edit-barcode">
+                </div>
+                <div class="selections">
+                    <label for="">Category:</label>
+                    <select name="" id="edit-category">
+                        {% for category in categories %}
+
+                        <option value="{{category.id}}">
+                            {{category.name}}
+                        </option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="selections">
+                    <label for="">Unit:</label>
+                    <select name="" id="edit-unit">
+                        <option value="PCS">
+                            Piece
+                        </option>
+                    
+                        <option value="KG">
+                            Kilogram
+                        </option>
+                    
+                        <option value="L">
+                            Liter
+                        </option>
+                    
+                        <option value="PACK">
+                            Pack
+                        </option>
+                    </select>
+                </div>
+                <div class="checkbox">
+                    <label for="">Age restricted:</label>
+                    <input type="checkbox" id="edit-age-restricted">
+                </div>
+                <div class="checkbox">
+                    <label for="">Active:</label>
+                    <input type="checkbox" id="edit-active">
+                </div>
+                <button id="save-product">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
     

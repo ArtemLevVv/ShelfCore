@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Product Category Create
+{% endblock title %}
+
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'category/css/category_create.css' %}">
+{% endblock link %}
+
+
+{% block content %}
+    <div class="con">
+        <form action="" method="post" class="form">
+            <div class="inputs">
+                {% csrf_token %}
+                {{form.as_p}}
+            </div>
+            <div class="button">
+                <button type="submit">
+
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+    
+

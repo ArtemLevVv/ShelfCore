@@ -20,5 +20,8 @@ class ProductForm(forms.ModelForm):
             "barcode",
             "category",
             "unit",
+            "is_active",
             "age_restricted",
         ]
+        
+    

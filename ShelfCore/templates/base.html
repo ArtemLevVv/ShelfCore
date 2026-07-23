@@ -30,6 +30,7 @@
                         {% else %}
                             <a href="{% url 'home' %}">Home</a>
                             <a href="{% url 'product_show' %}">Products</a>
+                            <a href="{% url 'product_category' %}">Categories</a>
                         {% endif %}
                     </div>
                     {% if user.is_authenticated %}

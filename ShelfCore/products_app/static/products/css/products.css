@@ -9,12 +9,82 @@
     border-radius: 20px;
 }
 
+.form{
+    width: 99%;
+}
+
 .search{
+    display: flex;
     width: 100%;
     height: 50px;
     margin: 4px 4px 4px 4px;
     border: #334155 solid 2px;
     border-radius: 20px;
+    align-items: center;
+}
+
+.searching-tools{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    align-items: center;
+}
+
+.searching-tools input{
+    width: 40%;
+    height: 80%;
+    border: #334155 1px solid;
+    border-radius: 15px;
+    background-color: #5885c7;
+    margin: 7px 8px 8px 8px;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    transition: 0.3s;
+}
+
+.searching-tools input:hover,
+.searching-tools select:hover,
+.button-search:hover{
+    transform: scaleX(1.08);
+}
+
+.searching-tools input::placeholder{
+    color: black;
+    text-align: center;
+    padding: auto;
+}
+
+.searching-tools select{
+    height: 80%;
+    width: 15%;
+    border: #334155 1px solid;
+    border-radius: 15px;
+    background-color: #5885c7;
+    margin: 8px 8px 8px 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    transition: 0.3s;
+}
+
+.button-search{
+    /* background-color: red; */
+    display: flex;
+    height: 100%;
+    width: 10%;
+    justify-content:right;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.button-search button{
+    height: 80%;
+    width: 70px;
+    border: #334155 1px solid;
+    border-radius: 15px;
+    background-color: #15803D;
+    margin: 8px 8px 8px 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
 }
 
 .menu{
@@ -35,13 +105,34 @@
     border: #334155 solid 2px;
     border-radius: 15px;
     padding: 4px 4px 4px 4px;
+    transform-origin: left center;
+    transition: transform 0.2s ease;
 }
 
+.product:hover {
+    transform: translateX(10px);
+}
 .buttons button{
     width: 50px;
     height: 50px;
     border: #334155 solid 2px;
     border-radius: 12345px;
+    transition: 0.2s;
+}
+
+.edit-btn,
+.info-btn{
+    transition: 0.2s;
+}
+
+.edit-btn:hover{
+    background-color: #D97706;
+    transform: scale(1.1);
+}
+
+.info-btn:hover{
+    background-color: #1D4ED8;
+    transform: scale(1.1);
 }
 
 p{
@@ -179,5 +270,117 @@ p{
     border: black solid 1px;
     border-radius: 12345px;
     background-color: #DC2626;
+    transition: 0.2s;
+}
+
+.close button:hover{
+    transform: scale(1.2);
+    background-color: #941a1a;
+}
+
+.modal-input{
+    padding: 10px 10px 10px 10px ;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.inputs{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 4px 4px 4px 4px;
+    height: 150px;
+}
+
+label{
+    height: 28px;
+    display: flex;
+    width: max-content;
+    background-color: #5885c7;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: #5885c7;
+    border-radius: 10px;
+    margin: 4px 4px 4px 4px;
+    text-decoration: underline;
+}
+
+.inputs input{
+    width: 100%;
+    height: 30px;
+    border: #334155 solid 2px;
+    border-radius: 20px;
+    background-color: #5885c7;
+    transition: 0.2s;
+}
+
+.inputs input:hover{
+    transform:scale(1.05);
+}
+
+.selections {
+    display: flex;
+    flex-wrap: wrap;
+    width: 47%;
+    height: 37px;
+    justify-content: space-between;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.selections select{
+    width: 100%;
+    background-color: #5885c7;
+    border: #334155;
+    border-radius: 20px;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    transition: 0.2s;
+}
+
+.selections select:hover{
+    transform: scale(1.1);
+}
+
+.checkbox{
+    display: flex;
+    width: 50%;
+    height: 37%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    transition: 0.2s;
+}
+
+.button-save{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-save button{
+    width: 150px;
+    height: 36px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    background-color: #15803D;
+    border:#15803D;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+
+.button-save button:hover{
+    transform: scale(1.2);
+    background-color: #2ac262;
 }
 

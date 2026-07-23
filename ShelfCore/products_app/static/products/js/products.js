@@ -7,7 +7,9 @@ const modal = document.querySelector('.modal');
 const modalEdit = document.querySelector('.modal-edit');
 const modalView = document.querySelector('.modal-view')
 // close button for both
-const CloseBtns = document.querySelectorAll('#close-modal');
+const closeBtns = document.querySelectorAll('.close-modal');
+// save button 
+const saveBtn = document.querySelector('#save-product');
 // span tags for view modal
 const modalName = document.querySelector('#modal-name');
 const modalUnit = document.querySelector('#modal-unit');
@@ -23,6 +25,8 @@ const modalEditCategory = document.querySelector('#edit-category');
 const modalEditUnit = document.querySelector('#edit-unit');
 const modalEditAgeRestricted = document.querySelector('#edit-age-restricted');
 const modalEditActive = document.querySelector('#edit-active');
+// saves info about pk of selected product
+let selectedProductId = null;
 
 function openViewModal(){
     modal.classList.add('active');
@@ -31,9 +35,11 @@ function openViewModal(){
     modalEdit.classList.remove('active');
 };
 
-function openEditModal(){
+function openEditModal(pk){
     modal.classList.add('active');
 
+    selectedProductId = pk;
+    
     modalView.classList.remove('active');
     modalEdit.classList.add('active');
 };
@@ -41,11 +47,32 @@ function openEditModal(){
 function closeModal(){
     modal.classList.remove('active');
 
+    selectedProductId = null;
+
     modalView.classList.remove('active');
     modalEdit.classList.remove('active');
 };
 
-CloseBtns.forEach(button => {
+function updateProduct(id, name, barcode){
+    const productDiv = document.querySelector(
+        `.product[data-id="${id}"]`
+    );
+
+    console.log(id)
+
+    const productDivName = productDiv.querySelector(
+        '.product-name'
+    );
+
+    const productDivBarcode = productDiv.querySelector(
+        '.product-barcode'
+    );
+
+    productDivName.textContent = name;
+    productDivBarcode.textContent = barcode;
+};
+
+closeBtns.forEach(button => {
     button.addEventListener(
         'click',
         closeModal,
@@ -89,8 +116,47 @@ EditBtns.forEach(button=>{
                     modalEditUnit.value = data.unit;
                     modalEditAgeRestricted.checked = data.age_restricted;
                     modalEditActive.checked = data.is_active;
-                    openEditModal();
-                });
-        }
-    );
-});
+                    openEditModal(id);
+                })
+            }
+        );
+    });
+
+    
+    saveBtn.addEventListener(
+    'click',
+    ()=>{
+        if (!selectedProductId) {
+            return;
+        };
+        const data = {
+            name: modalEditName.value,
+            barcode: modalEditBarcode.value,
+            category: modalEditCategory.value,
+            unit: modalEditUnit.value,
+            age_restricted: modalEditAgeRestricted.checked,
+            is_active: modalEditActive.checked,
+        };
+        
+        const csrftoken = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken='))
+        .split('=')[1];
+        fetch(`/products/${selectedProductId}/edit/`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken,
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data=>{
+            if (data.success){
+                updateProduct(data.product.id, data.product.name, data.product.barcode);
+            }}
+        )
+    }
+);
+
+

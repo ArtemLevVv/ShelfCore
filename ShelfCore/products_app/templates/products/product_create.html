@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Product    
+{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'products/css/product_create.css' %}">
+{% endblock link %}
+    
+{% block content %}
+    <div class="con">
+        <form action="" class="form" method="post">
+            <div class="form">
+                {% csrf_token %}
+                {{form.as_p}}
+            </div>
+            <div class="button">
+                <button type="submit">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+    
